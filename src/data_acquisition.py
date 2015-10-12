@@ -22,7 +22,7 @@ def download_data(url):
     ----
     Consider the urllib2 or wget python modules
     """
-    return NotImplemented
+    return wget.download(url)
 
 def save_data(data, output_filename):
     """
@@ -49,7 +49,13 @@ def save_data(data, output_filename):
     ----
     Check out the os module for determining whether a file exists already.
     """
-    return NotImplemented
+    if os.path.exists(output_filename):
+        return 1
+    else:
+        with open(output_filename, 'w') as f:
+            f.write(data)
+        return 0
+
 
 def verify_data(data, known_checksum):
     """
@@ -73,7 +79,7 @@ def verify_data(data, known_checksum):
     ----
     Check out the hashlib module
     """
-    return NotImplemented
+    return 
         
 def load_parsed_data(fname):
     """
